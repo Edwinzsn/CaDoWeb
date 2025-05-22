@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #121E30;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  padding: 20px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.horizontal-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  background-color: #1C2A3A;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  width: 320px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #37474F;
+  border-radius: 12px;
+  background-color: #263238;
+  color: #ECEFF1;
+  font-size: 16px;
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.password-container button {
+  background: none;
+  border: none;
+  color: #B0BEC5;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #263859;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.result-container {
+  background-color: #1C2A3A;
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 250px;
+  max-width: 300px;
+  align-self: flex-start;
+}
+
+.result-container h3 {
+  color: #4FC3F7;
+  margin-bottom: 10px;
+}
+
+.result-container p {
+  color: #B3E5FC;
+  font-size: 16px;
+}

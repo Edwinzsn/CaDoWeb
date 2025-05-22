@@ -1,0 +1,114 @@
+/* ../css/HomeScreen.css */
+
+body {
+  margin: 0;
+  background-color: #121e30;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #ffffff;
+}
+
+.container {
+  background-color: #1e2c45;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 0 20px #00e5ff88;
+  max-width: 800px;
+  width: 90%;
+}
+
+.title-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title-section h1 {
+  font-size: 28px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image-wrapper {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.5s ease;
+}
+
+.image-wrapper.glow {
+  box-shadow: 0 0 20px 4px #00e5ff;
+}
+
+.foco-image {
+  width: 150px;
+  height: 150px;
+  transition: filter 0.5s ease;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.status {
+  font-size: 20px;
+  color: #b0bec5;
+}
+
+.button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 2px 5px #00000088;
+  transition: background-color 0.3s ease;
+}
+
+.button-on {
+  background-color: #00bcd4;
+}
+
+.button-on:hover {
+  background-color: #009bb0;
+}
+
+.button-off {
+  background-color: #00838f;
+}
+
+.button-off:hover {
+  background-color: #005f63;
+}
+
+.button-alt {
+  background-color: #263859;
+}
+
+.button-alt:hover {
+  background-color: #1b2443;
+}
