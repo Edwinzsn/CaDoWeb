@@ -5,11 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"] ?? '';
     $password = $_POST["password"] ?? '';
 
-    // Usuario y contraseña válidos (puedes cambiarlos)
-    $validUser = "Edwin";
-    $validPass = "edwinzoe2207";
+    // Lista de usuarios válidos (nombre => contraseña)
+    $validUsers = [
+        "Edwin" => "edwinzoe2207",
+        "Diego" => "diegocr7"
+    ];
 
-    if ($username === $validUser && $password === $validPass) {
+    // Verificar si el usuario y la contraseña coinciden
+    if (array_key_exists($username, $validUsers) && $validUsers[$username] === $password) {
         $_SESSION["user"] = $username;
         header("Location: pages/MainScreen.php");
         exit();

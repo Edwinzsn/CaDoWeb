@@ -35,6 +35,7 @@ body {
   justify-content: space-between;
   gap: 40px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .left {
@@ -44,8 +45,8 @@ body {
 }
 
 .image-wrapper {
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   background-color: transparent;
   display: flex;
@@ -59,9 +60,10 @@ body {
 }
 
 .foco-image {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   transition: filter 0.5s ease;
+  filter: invert(1);
 }
 
 .right {
@@ -70,6 +72,7 @@ body {
   flex-direction: column;
   gap: 20px;
   align-items: flex-start;
+  min-width: 250px;
 }
 
 .status {
@@ -111,4 +114,23 @@ body {
 
 .button-alt:hover {
   background-color: #1b2443;
+}
+
+.button-on {
+  background-color: #00bcd4;
+  box-shadow:
+    0 0 8px #00e5ff88,
+    0 0 16px #00e5ff55,
+    0 0 24px #00e5ff33,
+    0 2px 5px #00000088;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-on:hover {
+  background-color: #009bb0;
+  box-shadow:
+    0 0 12px #00e5ffcc,
+    0 0 24px #00e5ffaa,
+    0 0 36px #00e5ff88,
+    0 4px 8px #000000bb;
 }

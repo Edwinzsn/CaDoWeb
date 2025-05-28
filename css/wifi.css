@@ -8,18 +8,22 @@ body {
   align-items: center;
   min-height: 100vh;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .container {
-  padding: 20px;
+  padding: 40px 30px;
   max-width: 900px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .title {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 30px;
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #4FC3F7;
 }
 
 .horizontal-wrapper {
@@ -32,22 +36,32 @@ body {
 
 .card {
   background-color: #1C2A3A;
-  padding: 30px;
+  padding: 40px 35px;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  width: 320px;
+  width: 360px;
+  box-sizing: border-box;
 }
 
 input[type="text"],
 input[type="password"] {
   width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
+  padding: 18px 20px;
+  margin-bottom: 25px;
   border: 1px solid #37474F;
   border-radius: 12px;
   background-color: #263238;
   color: #ECEFF1;
-  font-size: 16px;
+  font-size: 18px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #4FC3F7;
+  box-shadow: 0 0 10px #4FC3F7aa;
 }
 
 .password-container {
@@ -64,37 +78,73 @@ input[type="password"] {
   border: none;
   color: #B0BEC5;
   cursor: pointer;
-  font-size: 20px;
-  margin-left: 8px;
+  font-size: 22px;
+  margin-left: 12px;
+  transition: color 0.3s ease;
+}
+
+.password-container button:hover {
+  color: #4FC3F7;
 }
 
 .save-btn {
   width: 100%;
-  padding: 14px;
+  padding: 18px;
   background-color: #263859;
   color: white;
   border: none;
   border-radius: 12px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow:
+    0 0 10px #00e5ff88,
+    0 0 20px #00e5ff55,
+    0 0 30px #00e5ff33;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.save-btn:hover {
+  background-color: #1b2b4a;
+  box-shadow:
+    0 0 15px #00e5ffcc,
+    0 0 30px #00e5ffaa,
+    0 0 45px #00e5ff88;
 }
 
 .result-container {
   background-color: #1C2A3A;
-  padding: 20px;
+  padding: 30px 25px;
   border-radius: 12px;
-  min-width: 250px;
-  max-width: 300px;
+  min-width: 280px;
+  max-width: 320px;
   align-self: flex-start;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .result-container h3 {
   color: #4FC3F7;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  font-size: 22px;
 }
 
 .result-container p {
   color: #B3E5FC;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Scrollbar personalizado para inputs (opcional) */
+input[type="text"]::-webkit-scrollbar,
+input[type="password"]::-webkit-scrollbar {
+  width: 8px;
+}
+
+input[type="text"]::-webkit-scrollbar-thumb,
+input[type="password"]::-webkit-scrollbar-thumb {
+  background-color: #4FC3F7;
+  border-radius: 4px;
 }
