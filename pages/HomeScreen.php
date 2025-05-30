@@ -20,21 +20,49 @@ if (!isset($_SESSION['user'])) {
     </div>
 
     <div class="content">
+      <!-- Columna izquierda con las imágenes de los focos -->
       <div class="left">
-        <div class="image-wrapper" id="imageWrapper">
+        <!-- Foco 1 -->
+        <div class="image-wrapper" id="imageWrapper1">
           <img
             src="../assets/apagado.png"
-            alt="Estado del foco"
-            id="focoImage"
+            alt="Estado del foco 1"
+            id="focoImage1"
+            class="foco-image"
+          />
+        </div>
+
+        <!-- Foco 2 -->
+        <div class="image-wrapper" id="imageWrapper2">
+          <img
+            src="../assets/apagado.png"
+            alt="Estado del foco 2"
+            id="focoImage2"
+            class="foco-image"
+          />
+        </div>
+
+        <!-- Foco 3 -->
+        <div class="image-wrapper" id="imageWrapper3">
+          <img
+            src="../assets/apagado.png"
+            alt="Estado del foco 3"
+            id="focoImage3"
             class="foco-image"
           />
         </div>
       </div>
 
+      <!-- Columna derecha con el estado y botones -->
       <div class="right">
-        <p class="status" id="statusText">Apagada</p>
+        <p class="status" id="statusText">Todos apagados</p>
 
-        <button id="toggleButton" class="button button-on">Encender</button>
+        <!-- Botones para controlar los focos -->
+        <button id="toggleButton1" class="button button-on">Encender</button>
+        <button id="toggleButton2" class="button button-on">Encender</button>
+        <button id="toggleButton3" class="button button-on">Encender</button>
+
+        <!-- Botón para conectar al WiFi -->
         <button id="wifiButton" class="button button-alt">Conectar WiFi</button>
       </div>
     </div>
