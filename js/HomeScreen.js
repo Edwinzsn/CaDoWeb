@@ -1,5 +1,3 @@
-// ../js/HomeScreen.js
-
 document.addEventListener('DOMContentLoaded', () => {
   const focoImage = document.getElementById('focoImage');
   const statusText = document.getElementById('statusText');
@@ -7,9 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const imageWrapper = document.getElementById('imageWrapper');
   const wifiButton = document.getElementById('wifiButton');
 
-  // Aquí pones la IP del ESP32 — podrías tomarla de alguna variable PHP o input
-  // Para simplificar, la pongo fija. Luego puedes hacer que venga de PHP, sesión o input.
-  const espIp = '<?php echo $_SESSION["esp_ip"] ?? "192.168.1.68"; ?>';
+  if (!focoImage || !statusText || !toggleButton || !imageWrapper || !wifiButton) {
+    console.error("Elementos HTML no encontrados");
+    return;
+  }
+
+  const espIp = localStorage.getItem("esp_ip") || "192.168.1.68";
 
   let focoEncendido = false;
   let loading = false;
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const setUI = () => {
     focoImage.src = focoEncendido ? '../assets/prendido.png' : '../assets/apagado.png';
     statusText.textContent = focoEncendido ? 'Encendida' : 'Apagada';
-    toggleButton.textContent = loading ? 'Cambiando...' : focoEncendido ? 'Apagar' : 'Encender';
+    toggleButton.textContent = loading ? 'Cambiando...' : (focoEncendido ? 'Apagar' : 'Encender');
     toggleButton.disabled = loading;
 
     if (focoEncendido) {
@@ -33,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const fetchFocoStatus = async () => {
     try {
-      const response = await fetch(`http://${espIp}/status`);
-      if (!response.ok) throw new Error('Error en respuesta');
+      const response = await fetch(`http://${espIp}/status`, { cache: "no-store" });
+      if (!response.ok) throw new Error('Error en la respuesta del dispositivo');
       const data = await response.json();
-      focoEncendido = data.focos?.foco1 || false;
+      focoEncendido = !!data.focos?.foco1;
       setUI();
     } catch (error) {
       console.error('No se pudo obtener el estado del foco:', error);
@@ -46,14 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const toggleFoco = async () => {
+    if (loading) return; // Evitar doble click
     loading = true;
     setUI();
 
     try {
       const newState = !focoEncendido;
       const response = await fetch(`http://${espIp}/control/foco1/${newState ? 'on' : 'off'}`);
-      if (!response.ok) throw new Error('Error en comando');
+      if (!response.ok) throw new Error('Error en el comando al dispositivo');
       focoEncendido = newState;
+      statusText.textContent = 'Estado actualizado';
     } catch (error) {
       console.error('Error al cambiar estado:', error);
       alert('No se pudo cambiar el estado del foco.');
@@ -66,9 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleButton.addEventListener('click', toggleFoco);
 
   wifiButton.addEventListener('click', () => {
-    window.location.href = 'WifiScreen.php'; // Cambia a tu pantalla de configuración WiFi
+    window.location.href = 'WifiScreen.php';
   });
 
-  // Al cargar, obtener estado del foco
   fetchFocoStatus();
 });

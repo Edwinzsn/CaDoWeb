@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Configuración WiFi</title>
-  <link rel="stylesheet" href="../css/wifi.css">
+  <link rel="stylesheet" href="../css/wifi.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
   <div class="container">
@@ -11,18 +12,19 @@
 
     <div class="horizontal-wrapper">
       <div class="card">
-        <input type="text" id="ssid" placeholder="Nombre de red (SSID)" />
+        <label for="ssid" class="sr-only">Nombre de red (SSID)</label>
+        <input type="text" id="ssid" placeholder="Nombre de red (SSID)" autocomplete="wifi-network" />
 
         <div class="password-container">
-          <input type="password" id="password" placeholder="Contraseña" />
-          <button id="toggle-password">
-            👁️
-          </button>
+          <label for="password" class="sr-only">Contraseña</label>
+          <input type="password" id="password" placeholder="Contraseña" autocomplete="current-password" />
+          <button type="button" id="toggle-password" aria-label="Mostrar u ocultar contraseña">👁️</button>
         </div>
 
-        <input type="text" id="ip" placeholder="IP del ESP32 (ej. 192.168.1.68)" />
+        <label for="ip" class="sr-only">IP del ESP32</label>
+        <input type="text" id="ip" placeholder="IP del ESP32 (ej. 192.168.1.68)" autocomplete="off" />
 
-        <button class="save-btn" onclick="guardarWifi()">Guardar</button>
+        <button type="button" class="save-btn" onclick="guardarWifi()">Guardar</button>
       </div>
 
       <div id="result" class="result-container" style="display: none;">

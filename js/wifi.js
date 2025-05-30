@@ -1,38 +1,48 @@
-window.onload = () => {
-  const ssid = localStorage.getItem('wifiSSID');
-  const ip = localStorage.getItem('wifiIP');
+document.addEventListener('DOMContentLoaded', () => {
+  const togglePasswordBtn = document.getElementById('toggle-password');
+  const passwordInput = document.getElementById('password');
 
-  if (ssid) document.getElementById('ssid').value = ssid;
-  if (ip) {
-    document.getElementById('ip').value = ip;
-    document.getElementById('result').style.display = 'block';
-    document.getElementById('saved-ip').innerText = `IP del ESP32: ${ip}`;
+  if (togglePasswordBtn && passwordInput) {
+    togglePasswordBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      togglePasswordBtn.textContent = isPassword ? '🙈' : '👁️';
+    });
   }
+});
 
-  const toggleBtn = document.getElementById('toggle-password');
-  toggleBtn.addEventListener('click', () => {
-    const pwdInput = document.getElementById('password');
-    pwdInput.type = pwdInput.type === 'password' ? 'text' : 'password';
-    toggleBtn.textContent = pwdInput.type === 'password' ? '👁️' : '🙈';
-  });
-};
+function validarIP(ip) {
+  // Expresión regular válida para IPv4
+  const regexIP = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
+  return regexIP.test(ip);
+}
 
 function guardarWifi() {
-  const ssid = document.getElementById('ssid').value;
-  const password = document.getElementById('password').value;
-  const ip = document.getElementById('ip').value;
+  const ssid = document.getElementById('ssid')?.value.trim() || '';
+  const password = document.getElementById('password')?.value.trim() || '';
+  const ip = document.getElementById('ip')?.value.trim() || '';
 
-  if (!ssid || !password || !ip) {
-    alert('Por favor completa todos los campos');
+  if (!ip || !validarIP(ip)) {
+    alert('Por favor ingresa una IP válida del ESP32.');
     return;
   }
 
-  localStorage.setItem('wifiSSID', ssid);
-  localStorage.setItem('wifiPassword', password); // no se recomienda guardar contraseñas así
-  localStorage.setItem('wifiIP', ip);
+  // Guardar en localStorage
   localStorage.setItem('esp_ip', ip);
+  localStorage.setItem('esp_ssid', ssid);
+  localStorage.setItem('esp_password', password);
 
-  document.getElementById('result').style.display = 'block';
-  document.getElementById('saved-ip').innerText = `IP del ESP32: ${ip}`;
-  alert('Datos guardados correctamente');
+  const savedIpEl = document.getElementById('saved-ip');
+  if (savedIpEl) {
+    savedIpEl.textContent = `IP del ESP32: ${ip}`;
+  }
+
+  const resultDiv = document.getElementById('result');
+  if (resultDiv) {
+    resultDiv.style.display = 'block';
+  }
+
+  setTimeout(() => {
+    window.location.href = 'MainScreen.php'; // o 'HomeScreen.php'
+  }, 2000);
 }
