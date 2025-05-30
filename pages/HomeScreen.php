@@ -24,32 +24,20 @@ if (!isset($_SESSION['user'])) {
       <div class="left">
         <!-- Foco 1 -->
         <div class="image-wrapper" id="imageWrapper1">
-          <img
-            src="../assets/apagado.png"
-            alt="Estado del foco 1"
-            id="focoImage1"
-            class="foco-image"
-          />
+          <img src="../assets/apagado.png" alt="Estado del foco 1" id="focoImage1" class="foco-image" />
+          <p class="foco-label">Foco Sala</p>
         </div>
 
         <!-- Foco 2 -->
         <div class="image-wrapper" id="imageWrapper2">
-          <img
-            src="../assets/apagado.png"
-            alt="Estado del foco 2"
-            id="focoImage2"
-            class="foco-image"
-          />
+          <img src="../assets/apagado.png" alt="Estado del foco 2" id="focoImage2" class="foco-image" />
+          <p class="foco-label">Foco Cocina</p>
         </div>
 
         <!-- Foco 3 -->
         <div class="image-wrapper" id="imageWrapper3">
-          <img
-            src="../assets/apagado.png"
-            alt="Estado del foco 3"
-            id="focoImage3"
-            class="foco-image"
-          />
+          <img src="../assets/apagado.png" alt="Estado del foco 3" id="focoImage3" class="foco-image" />
+          <p class="foco-label">Foco Recámara</p>
         </div>
       </div>
 
@@ -57,12 +45,12 @@ if (!isset($_SESSION['user'])) {
       <div class="right">
         <p class="status" id="statusText">Todos apagados</p>
 
-        <!-- Botones para controlar los focos -->
-        <button id="toggleButton1" class="button button-on">Encender</button>
-        <button id="toggleButton2" class="button button-on">Encender</button>
-        <button id="toggleButton3" class="button button-on">Encender</button>
+        <div class="button-group">
+          <button id="toggleButton1" class="button button-on">Encender</button>
+          <button id="toggleButton2" class="button button-on">Encender</button>
+          <button id="toggleButton3" class="button button-on">Encender</button>
+        </div>
 
-        <!-- Botón para conectar al WiFi -->
         <button id="wifiButton" class="button button-alt">Conectar WiFi</button>
       </div>
     </div>

@@ -1,3 +1,4 @@
+/* Estilo base del body */
 body {
   margin: 0;
   background-color: #121e30;
@@ -9,6 +10,7 @@ body {
   color: #ffffff;
 }
 
+/* Contenedor principal */
 .container {
   background-color: #1e2c45;
   border-radius: 16px;
@@ -18,6 +20,7 @@ body {
   width: 90%;
 }
 
+/* Título */
 .title-section {
   text-align: center;
   margin-bottom: 20px;
@@ -27,6 +30,7 @@ body {
   font-size: 28px;
 }
 
+/* Contenido principal: imagenes y controles */
 .content {
   display: flex;
   flex-direction: row;
@@ -36,19 +40,23 @@ body {
   flex-wrap: wrap;
 }
 
+/* Columna izquierda (focos) */
 .left {
   flex: 1;
   display: flex;
   justify-content: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
+/* Contenedor circular del foco */
 .image-wrapper {
   width: 160px;
   height: 160px;
   border-radius: 50%;
   background-color: transparent;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: box-shadow 0.5s ease;
@@ -58,6 +66,7 @@ body {
   box-shadow: 0 0 20px 4px #00e5ff;
 }
 
+/* Imagen del foco */
 .foco-image {
   width: 120px;
   height: 120px;
@@ -65,6 +74,15 @@ body {
   filter: invert(1);
 }
 
+/* Etiqueta del foco */
+.foco-label {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #90caf9;
+}
+
+/* Columna derecha (botones) */
 .right {
   flex: 1;
   display: flex;
@@ -74,11 +92,13 @@ body {
   min-width: 250px;
 }
 
+/* Texto de estado */
 .status {
   font-size: 20px;
   color: #b0bec5;
 }
 
+/* Botones generales */
 .button {
   width: 100%;
   padding: 14px;
@@ -91,30 +111,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.button-on {
-  background-color: #00bcd4;
-}
-
-.button-on:hover {
-  background-color: #009bb0;
-}
-
-.button-off {
-  background-color: #00838f;
-}
-
-.button-off:hover {
-  background-color: #005f63;
-}
-
-.button-alt {
-  background-color: #263859;
-}
-
-.button-alt:hover {
-  background-color: #1b2443;
-}
-
+/* Estilo de botón activo */
 .button-on {
   background-color: #00bcd4;
   box-shadow:
@@ -122,7 +119,6 @@ body {
     0 0 16px #00e5ff55,
     0 0 24px #00e5ff33,
     0 2px 5px #00000088;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button-on:hover {
@@ -132,4 +128,58 @@ body {
     0 0 24px #00e5ffaa,
     0 0 36px #00e5ff88,
     0 4px 8px #000000bb;
+}
+
+/* Estilo de botón apagado */
+.button-off {
+  background-color: #00838f;
+}
+
+.button-off:hover {
+  background-color: #005f63;
+}
+
+/* Botón alternativo (WiFi) */
+.button-alt {
+  background-color: #263859;
+}
+
+.button-alt:hover {
+  background-color: #1b2443;
+}
+
+/* Agrupación de botones de focos */
+.button-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-group .button {
+  flex: 1;
+  min-width: 80px;
+}
+
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left, .right {
+    width: 100%;
+    align-items: center;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group .button {
+    width: 100%;
+  }
 }
